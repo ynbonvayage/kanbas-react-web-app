@@ -30,19 +30,23 @@
 
 .import-btn {
     background-color: #f0ad4e;
+    height: 50px;
 }
 
 .export-btn {
     background-color: #5bc0de;
+    height: 50px;
 }
 
 .settings-btn {
     background-color: #5c5c5c;
+    height: 50px;
 }
 
 .wd-grades-screen {
     max-width: 100%;
     padding: 20px;
+
 }
 
 .wd-search-bars .btn-secondary {
@@ -56,4 +60,7 @@
     border-radius: 5px;
     padding: 10px;
     font-size: 0.9em;
+}
+.row{
+    height: 50px;
 }

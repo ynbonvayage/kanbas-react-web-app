@@ -1,10 +1,9 @@
 import ModuleList from "./ModuleList";
-import "./index.css"
-import Toolbar from "./toolbar";
+import ToolBar from "./ToolBar";
 function Modules() {
     return (
         <div>
-           <Toolbar/>
+           <ToolBar/>
             <ModuleList />
         </div>
     );

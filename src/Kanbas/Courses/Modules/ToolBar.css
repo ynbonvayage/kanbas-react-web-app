@@ -1,0 +1,59 @@
+.toolbar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 600px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: #d4d4d4;
+}
+
+.btn-accent {
+    background-color: #4CAF50;
+    color: white; /* Modified color to improve readability */
+}
+
+.btn-accent:hover {
+    background-color: #43a047;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.arrow {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background-color: #e6e6e6;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu:hover {
+    background-color: #d4d4d4;
+}
