@@ -1,0 +1,17 @@
+import { Link, useLocation } from 'react-router-dom';
+import './Nav.css';
+
+function Nav() {
+    const { pathname } = useLocation();
+
+    return (
+        <nav className='nav'>
+            <Link to='/hello' className={`nav-link ${pathname.includes('hello') ? "active" : ""}`}>Hello</Link>
+            <Link to='/Labs/a3' className={`nav-link ${pathname.includes('a3') ? 'active' : ''}`}>Assignment 3</Link>
+            <Link to='/Kanbas' className={`nav-link ${pathname.includes('Kanbas') ? 'active' : ''}`}>Kanbas</Link>
+        </nav>
+    )
+
+}
+
+export default Nav;

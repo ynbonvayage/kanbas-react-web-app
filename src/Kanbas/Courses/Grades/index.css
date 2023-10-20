@@ -1,0 +1,59 @@
+.wd-search-bars .row {
+    padding-bottom: 15px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    border: 1px solid #c7c7c7;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+.title {
+    color: #4a4a4a;
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+}
+
+.import-btn,
+.export-btn,
+.settings-btn {
+    background-color: #5cb85c;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-right: 10px;
+}
+
+.import-btn {
+    background-color: #f0ad4e;
+}
+
+.export-btn {
+    background-color: #5bc0de;
+}
+
+.settings-btn {
+    background-color: #5c5c5c;
+}
+
+.wd-grades-screen {
+    max-width: 100%;
+    padding: 20px;
+}
+
+.wd-search-bars .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    border-radius: 5px;
+}
+
+.wd-search-bars .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.9em;
+}

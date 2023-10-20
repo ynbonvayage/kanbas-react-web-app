@@ -1,0 +1,22 @@
+.module-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.module-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f5f5f5;
+}
+
+.module-icon, .module-title, .module-dropdown, .module-add, .module-menu {
+    margin-right: 10px;
+}
+
+.module-title {
+    flex-grow: 1;
+}
