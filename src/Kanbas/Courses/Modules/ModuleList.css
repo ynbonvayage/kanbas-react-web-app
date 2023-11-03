@@ -46,3 +46,52 @@
 .module-dropdown {
     color: #2196f3; /* Blue color for the "v" dropdown icon */
 }
+
+.list-group-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.list-group-item > div {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    width: 580px;
+}
+
+.li-group-item input {
+    flex: 1;
+    padding: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    width: 470px;
+    height: 60px;
+
+}
+
+
+.list-group-item button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.list-group-item button:hover {
+    background-color: #45a049;
+}
+
+.li-group-item {
+    list-style-type: none;
+}
+.btn{
+    background-color:red;
+    color:white;
+}
+

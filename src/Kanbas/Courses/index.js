@@ -7,11 +7,11 @@ import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
+import React, { useState } from "react";
 
-
-function Courses() {
+function Courses({courses}) {
     const { courseId } = useParams();
-    const course = db.courses.find((course) => course._id === courseId);
+    const course = courses.find((course) => course._id === courseId);
     const url = window.location.href;
     const afterLastSlash = url.substring(url.lastIndexOf('/') + 1);
     const result = afterLastSlash.split('%')[0];
