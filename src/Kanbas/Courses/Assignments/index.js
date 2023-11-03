@@ -1,0 +1,78 @@
+import React from "react";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import db from "../../Database";
+import "./index.css";
+import { FaEllipsisV } from "react-icons/fa";
+import { AiFillCheckCircle, AiFillEdit } from "react-icons/ai";
+import { BsFillTrashFill } from "react-icons/bs";
+import { AiOutlinePlus } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import DeleteConfirm from "./deleteConfirm.js";
+
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addAssignment,
+  deleteAssignment,
+  updateAssignment,
+  setAssignment,
+} from "./assignmentsReducer";
+
+function Assignments() {
+  const { courseId } = useParams();
+  const [courses, setCourses] = useState(db.courses);
+  const [course, setCourse] = useState({ name: "New Course", number: "New Number", startDate: "2023-09-10", endDate: "2023-12-15", });
+  const assignments = useSelector((state) => state.assignmentsReducer.assignments);
+  const assignment = useSelector((state) => state.assignmentsReducer.assignment);
+  const dispatch = useDispatch();
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState({open: false});
+
+  const navigate = useNavigate();
+  const courseAssignments = assignments.filter(
+      (assignment) => assignment.course === courseId);
+
+  const setShowDeleteConfirmTrue = (assignment) => {
+    dispatch(setAssignment(assignment));
+    setShowDeleteConfirm({open: true});
+  }
+
+  const navigateToEdit = () => { navigate(`/Kanbas/Courses/${courseId}/Assignments/Edit`) };
+
+  return (
+      <div className="assignment-container">
+        <h2 className="course-header">Assignments for course {courseId}</h2>
+        <DeleteConfirm state={showDeleteConfirm} setOpen={setShowDeleteConfirm} />
+        <div className="assignment-actions">
+          <input className="search-input" placeholder="Search for Assignments"></input>
+          <div className="action-buttons">
+            <button className="btn btn-danger add-assignment-btn" onClick={() => {
+              dispatch(setAssignment({ ...assignment, title: "New Assignment", course: courseId }));
+              navigateToEdit();
+            }}><AiOutlinePlus />Assignment</button>
+            <button className="btn btn-secondary add-group-btn"><AiOutlinePlus />Group</button>
+          </div>
+        </div>
+        <div className="assignment-list">
+          <h2 className="list-header">ASSIGNMENTS
+            <span className="percent-label">40% of Total</span>
+          </h2>
+          {courseAssignments.map((assignment) => (
+              <div key={assignment._id} className="list-group-item">
+                <h4>{assignment.title}</h4>
+                Multiple Models
+                <FaEllipsisV className="wd-assignment-ellipsis float-end" />
+                <AiFillCheckCircle className="wd-assignment-check float-end" />
+                <BsFillTrashFill onClick={() => setShowDeleteConfirmTrue(assignment)}
+                                 className=" wd-assignment-trash float-end" />
+                <AiFillEdit className=" wd-assignment-edit float-end"
+                            onClick={() =>{
+                                navigate(`/Kanbas/Courses/${courseId}/Assignments/Edit`);
+                }}/>
+              </div>
+          ))}
+        </div>
+      </div>
+  );
+}
+
+export default Assignments;
