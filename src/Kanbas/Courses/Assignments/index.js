@@ -25,7 +25,7 @@ function Assignments() {
   const [courses, setCourses] = useState(db.courses);
   const [course, setCourse] = useState({ name: "New Course", number: "New Number", startDate: "2023-09-10", endDate: "2023-12-15", });
   const assignments = useSelector((state) => state.assignmentsReducer.assignments);
-  const assignment = useSelector((state) => state.assignmentsReducer.assignment);
+  // const assignment = useSelector((state) => state.assignmentsReducer.assignment);
   const dispatch = useDispatch();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState({open: false});
 
@@ -38,11 +38,12 @@ function Assignments() {
     setShowDeleteConfirm({open: true});
   }
 
-  const navigateToEdit = () => { navigate(`/Kanbas/Courses/${courseId}/Assignments/Edit`) };
+  const navigateToEdit = () => { navigate(`/Kanbas/Courses/${courseId}/Assignments/New`) };
+
   useEffect(() => {
     findAssignmentsForCourse(courseId)
-        .then((modules) =>
-            dispatch(setAssignments(modules))
+        .then((assignments) =>
+            dispatch(setAssignments(assignments))
         );
   }, [courseId]);
 
@@ -54,7 +55,7 @@ function Assignments() {
           <input className="search-input" placeholder="Search for Assignments"></input>
           <div className="action-buttons">
             <button className="btn btn-danger add-assignment-btn" onClick={() => {
-              dispatch(setAssignment({ ...assignment, title: "New Assignment", course: courseId }));
+              dispatch(setAssignment(false));
               navigateToEdit();
             }}><AiOutlinePlus />Assignment</button>
             <button className="btn btn-secondary add-group-btn"><AiOutlinePlus />Group</button>
@@ -74,7 +75,8 @@ function Assignments() {
                                  className=" wd-assignment-trash float-end" />
                 <AiFillEdit className=" wd-assignment-edit float-end"
                             onClick={() =>{
-                                navigate(`/Kanbas/Courses/${courseId}/Assignments/Edit`);
+                                dispatch(setAssignment(assignment));
+                                navigate(`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`);
                 }}/>
               </div>
           ))}

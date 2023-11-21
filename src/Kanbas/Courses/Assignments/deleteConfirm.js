@@ -7,6 +7,7 @@ import {
     updateAssignment,
     setAssignment,
   } from "./assignmentsReducer";
+import * as client from './client';
 
 function DeleteConfirm({state, setOpen}){
     
@@ -14,8 +15,11 @@ function DeleteConfirm({state, setOpen}){
     const dispatch = useDispatch();
     const doThing = (input) => {
         if (input == "Yes"){
-            dispatch(deleteAssignment(assignment._id))
-            setOpen({open: false});
+            client.deleteAssignment(assignment._id)
+                .then(() => {
+                    dispatch(deleteAssignment(assignment._id))
+                    setOpen({open: false});
+                })
         }
         else if(input =="No") {
             setOpen({open: false});

@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export const defaultAssignment = { title: "New Assignment 123", description: "New Description" };
 
 const initialState = {
   assignments: [],
-  assignment: { name: "New Assignment 123", description: "New Description" },
+  assignment: defaultAssignment,
 };
 
 
@@ -13,7 +14,7 @@ const assignmentsSlice = createSlice({
   reducers: {
     addAssignment: (state, action) => {
       state.assignments = [
-        { ...action.payload, _id: new Date().getTime().toString() },
+        { ...action.payload },
           ...state.assignments,
       ];
     },
@@ -32,7 +33,7 @@ const assignmentsSlice = createSlice({
       });
     },
     setAssignment: (state, action) => {
-      state.assignment = action.payload;
+      state.assignment = action.payload ? {...action.payload} : defaultAssignment;
     },
     setAssignments: (state, action) => {
       state.assignments = action.payload;
