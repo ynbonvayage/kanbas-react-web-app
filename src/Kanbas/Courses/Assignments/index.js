@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
 import db from "../../Database";
 import "./index.css";
@@ -16,7 +16,9 @@ import {
   deleteAssignment,
   updateAssignment,
   setAssignment,
+  setAssignments,
 } from "./assignmentsReducer";
+import { findAssignmentsForCourse } from "./client";
 
 function Assignments() {
   const { courseId } = useParams();
@@ -37,6 +39,12 @@ function Assignments() {
   }
 
   const navigateToEdit = () => { navigate(`/Kanbas/Courses/${courseId}/Assignments/Edit`) };
+  useEffect(() => {
+    findAssignmentsForCourse(courseId)
+        .then((modules) =>
+            dispatch(setAssignments(modules))
+        );
+  }, [courseId]);
 
   return (
       <div className="assignment-container">
