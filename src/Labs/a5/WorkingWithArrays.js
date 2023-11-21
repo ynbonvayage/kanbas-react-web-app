@@ -3,7 +3,8 @@ import axios from "axios";
 
 
 function WorkingWithArrays() {
-    const API = "http://localhost:4000/a5/todos";
+    const BASE = process.env.REACT_APP_API_BASE || 'http://localhost:4000';
+    const API = `${BASE}/a5/todos`;
     //const [todo, setTodo] = useState({});
     const [todo, setTodo] = useState({
         id: 1,
